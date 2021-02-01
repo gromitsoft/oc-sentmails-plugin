@@ -1,0 +1,15 @@
+<?php
+/**
+ * @var \GromIT\SentMails\Models\Mail $record
+ */
+?>
+<?php if ($record->opened_at === null): ?>
+    <div>
+        <i class="icon-envelope"></i>
+    </div>
+<?php else: ?>
+    <div class="text-success">
+        <i class="icon-envelope-open"></i>
+        <?= $record->opened_at ?>
+    </div>
+<?php endif ?>

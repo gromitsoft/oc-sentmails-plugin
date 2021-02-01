@@ -1,0 +1,21 @@
+<?php
+/**
+ * @var \GromIT\SentMails\Models\Mail $record
+ */
+?>
+<?php foreach (['to', 'cc', 'bcc'] as $section): ?>
+    <?php if (count($record->to[$section]) > 0): ?>
+        <div class="small">
+            <?php if ($section === 'to'): ?>
+                <?= __('gromit.sentmails::lang.mails.to') ?>:
+            <?php elseif ($section === 'cc'): ?>
+                <?= __('gromit.sentmails::lang.mails.cc') ?>:
+            <?php elseif ($section === 'bcc'): ?>
+                <?= __('gromit.sentmails::lang.mails.bcc') ?>:
+            <?php endif ?>
+            <?= collect($record->to[$section])->map(function ($name, $addr) {
+                return "$name ($addr)";
+            })->implode(', ') ?>
+        </div>
+    <?php endif ?>
+<?php endforeach ?>

@@ -1,0 +1,12 @@
+.table-info td {
+    padding: 3px 6px;
+}
+
+.table-info-label {
+    color: #999;
+}
+
+#mailFrame {
+    border: none;
+    width: 100%;
+}

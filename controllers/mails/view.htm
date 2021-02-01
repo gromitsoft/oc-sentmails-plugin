@@ -1,0 +1,80 @@
+<?php
+/**
+ * @var \GromIT\SentMails\Controllers\Mails $this
+ * @var \GromIT\SentMails\Models\Mail       $mail
+ */
+
+use Illuminate\Support\Facades\Storage;
+
+?>
+<?php if (!$this->fatalError): ?>
+
+    <div data-control="toolbar" class="m-b">
+        <a href="<?= $this->actionUrl('/') ?>"
+           class="btn btn-default oc-icon-arrow-left">
+            <?= __('gromit.sentmails::lang.controllers.mails.view.back') ?>
+        </a>
+    </div>
+
+    <table class="table-info m-b">
+        <tr>
+            <td class="table-info-label"><?= __('gromit.sentmails::lang.mails.from') ?>:</td>
+            <td><?= $mail->from ?></td>
+        </tr>
+
+        <?php foreach (['to', 'cc', 'bcc'] as $section): ?>
+            <?php if (count($mail->to[$section]) > 0): ?>
+                <tr>
+                    <td class="table-info-label">
+                        <?php if ($section === 'to'): ?>
+                            <?= __('gromit.sentmails::lang.mails.to') ?>:
+                        <?php elseif ($section === 'cc'): ?>
+                            <?= __('gromit.sentmails::lang.mails.cc') ?>:
+                        <?php elseif ($section === 'bcc'): ?>
+                            <?= __('gromit.sentmails::lang.mails.bcc') ?>:
+                        <?php endif ?>
+                    </td>
+                    <td>
+                        <?= collect($mail->to[$section])->map(function ($name, $addr) {
+                            return "$name ($addr)";
+                        })->implode(', ') ?>
+                    </td>
+                </tr>
+            <?php endif ?>
+        <?php endforeach ?>
+        <tr>
+            <td class="table-info-label"><?= __('gromit.sentmails::lang.mails.sent_at') ?>:</td>
+            <td><?= $mail->created_at ?></td>
+        </tr>
+        <?php if ($mail->opened_at): ?>
+            <tr>
+                <td class="table-info-label"><?= __('gromit.sentmails::lang.mails.opened_at') ?>:</td>
+                <td><?= $mail->opened_at ?></td>
+            </tr>
+        <?php endif ?>
+    </table>
+
+    <div>
+        <?php if (Storage::exists($mail->file)): ?>
+            <iframe src="/storage/app/<?= $mail->file ?>"
+                    id="mailFrame"></iframe>
+
+            <script>
+                resizeFrame('mailFrame');
+            </script>
+        <?php else: ?>
+            <p class="flash-message static info"><?= __('gromit.sentmails::lang.errors.file_deleted') ?></p>
+        <?php endif ?>
+    </div>
+
+
+<?php else: ?>
+
+    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
+    <p><a href="<?= $this->actionUrl('/') ?>"
+          class="btn btn-default">
+            <?= __('gromit.sentmails::lang.controllers.mails.view.return_to_list') ?>
+        </a>
+    </p>
+
+<?php endif ?>

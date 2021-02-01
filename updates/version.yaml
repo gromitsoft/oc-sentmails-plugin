@@ -1,0 +1,6 @@
+1.0.1:
+    - First version of SentMails
+    - create_mails_table.php
+1.0.2:
+    - Add subject to mails
+    - add_subject_to_mails.php

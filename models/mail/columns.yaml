@@ -1,0 +1,25 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    created_at:
+        label: gromit.sentmails::lang.mails.sent_at
+    subject:
+        label: gromit.sentmails::lang.mails.subject
+        searchable: true
+    from:
+        label: gromit.sentmails::lang.mails.from
+        searchable: true
+    to:
+        label: gromit.sentmails::lang.mails.to
+        type: partial
+        path: partials/to
+        sortable: false
+        searchable: false
+    opened_at:
+        label: gromit.sentmails::lang.mails.opened_at
+        type: partial
+        path: partials/opened_at
+        sortable: false
+        searchable: false

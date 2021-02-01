@@ -1,0 +1,21 @@
+{
+    "name": "gromit/oc-sentmails-plugin",
+    "description": "Sent emails tracker for OctoberCMS.",
+    "type": "october-plugin",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergey Kasyanov",
+            "email": "skasmail@gmail.com"
+        },
+        {
+            "name": "Grom-IT",
+            "email": "info@grom-it.ru"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.8",
+        "composer/installers": "~1.0"
+    }
+}
