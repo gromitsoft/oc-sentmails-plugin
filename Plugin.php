@@ -1,10 +1,12 @@
 <?php namespace GromIT\SentMails;
 
 use Backend\Facades\Backend;
-use Illuminate\Support\Facades\Event;
 use GromIT\SentMails\Listeners\AfterSendMail;
 use GromIT\SentMails\Listeners\BeforeSendMail;
+use GromIT\SentMails\Models\Settings;
+use Illuminate\Support\Facades\Event;
 use System\Classes\PluginBase;
+use System\Classes\SettingsManager;
 
 /**
  * SentMails Plugin Information File
@@ -52,6 +54,26 @@ class Plugin extends PluginBase
                 'permissions' => ['gromit.sentmails.*'],
                 'order'       => 500,
             ],
+        ];
+    }
+
+    /**
+     * registerSettings registers any back-end configuration links used by this plugin.
+     *
+     * @return array
+     */
+    public function registerSettings()
+    {
+        return [
+            'sentmails_settings' => [
+                'label'       => 'SentMails',
+                'description' => __('gromit.sentmails::lang.plugin.settings.sentmails.description'),
+                'category'    => SettingsManager::CATEGORY_MAIL,
+                'icon'        => 'icon-envelope-open',
+                'class'       => Settings::class,
+                'order'       => 500,
+                'keywords'    => 'mail disk',
+            ]
         ];
     }
 }

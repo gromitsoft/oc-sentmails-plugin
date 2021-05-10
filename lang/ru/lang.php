@@ -11,6 +11,12 @@ return [
         'sent_at'   => 'Когда',
         'opened_at' => 'Открыто',
     ],
+    'settings'    => [
+        'disk' => [
+            'label'   => 'Диск для хранения отправленных писем',
+            'comment' => '<span class="text-danger">Изменяйте, только если точно знаете, что делаете!</span>',
+        ]
+    ],
     'errors'      => [
         'mail_not_found' => 'Письмо не найдено',
         'file_deleted'   => 'Файл удален',
@@ -32,6 +38,11 @@ return [
         ],
     ],
     'plugin'      => [
-        'description' => 'Сохраняет отправляемые письма в storage'
+        'description' => 'Сохраняет отправляемые письма в storage',
+        'settings' => [
+            'sentmails' => [
+                'description' => 'Настройки плагина SentMails',
+            ],
+        ],
     ],
 ];

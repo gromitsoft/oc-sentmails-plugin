@@ -4,3 +4,5 @@
 1.0.2:
     - Add subject to mails
     - add_subject_to_mails.php
+
+1.0.3: Storing emails disk setting

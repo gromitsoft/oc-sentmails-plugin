@@ -4,6 +4,7 @@
  * @var \GromIT\SentMails\Models\Mail       $mail
  */
 
+use GromIT\SentMails\Models\Settings;
 use Illuminate\Support\Facades\Storage;
 
 ?>
@@ -43,6 +44,10 @@ use Illuminate\Support\Facades\Storage;
             <?php endif ?>
         <?php endforeach ?>
         <tr>
+            <td class="table-info-label"><?= __('gromit.sentmails::lang.mails.subject') ?>:</td>
+            <td><?= $mail->from ?></td>
+        </tr>
+        <tr>
             <td class="table-info-label"><?= __('gromit.sentmails::lang.mails.sent_at') ?>:</td>
             <td><?= $mail->created_at ?></td>
         </tr>
@@ -55,8 +60,8 @@ use Illuminate\Support\Facades\Storage;
     </table>
 
     <div>
-        <?php if (Storage::exists($mail->file)): ?>
-            <iframe src="/storage/app/<?= $mail->file ?>"
+        <?php if (Storage::disk(Settings::getDisk())->exists($mail->file)): ?>
+            <iframe src="<?= Storage::disk(Settings::getDisk())->url($mail->file) ?>"
                     id="mailFrame"></iframe>
 
             <script>

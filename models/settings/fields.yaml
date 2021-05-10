@@ -1,0 +1,7 @@
+fields:
+    disk:
+        label: gromit.sentmails::lang.settings.disk.label
+        comment: gromit.sentmails::lang.settings.disk.comment
+        commentHtml: true
+        type: dropdown
+        default: local

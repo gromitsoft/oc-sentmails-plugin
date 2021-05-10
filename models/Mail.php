@@ -50,7 +50,7 @@ class Mail extends Model
 
     protected function afterDelete()
     {
-        Storage::delete($this->file);
+        Storage::disk(Settings::getDisk())->delete($this->file);
     }
 
     public function see(): bool

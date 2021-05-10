@@ -11,6 +11,12 @@ return [
         'sent_at'   => 'Sent at',
         'opened_at' => 'Opened at',
     ],
+    'settings'    => [
+        'disk' => [
+            'label'   => 'Disk for storing sent mails',
+            'comment' => '<span class="text-danger">Change only if you know what you are doing!</span>',
+        ]
+    ],
     'errors'      => [
         'mail_not_found' => 'Mail not found',
         'file_deleted'   => 'File deleted',
@@ -32,6 +38,11 @@ return [
         ],
     ],
     'plugin'      => [
-        'description' => 'Saves sent mails to storage'
+        'description' => 'Saves sent mails to storage',
+        'settings' => [
+            'sentmails' => [
+                'description' => 'SentMails plugin settings',
+            ],
+        ],
     ],
 ];

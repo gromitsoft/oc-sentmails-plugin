@@ -4,6 +4,7 @@ use Backend\Facades\BackendAuth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use GromIT\SentMails\Models\Mail;
+use GromIT\SentMails\Models\Settings;
 
 Route::prefix('_mails')->group(static function () {
     Route::get('view/{token}', static function (string $token) {
@@ -14,7 +15,7 @@ Route::prefix('_mails')->group(static function () {
             return '';
         }
 
-        return Storage::get($mail->file);
+        return Storage::disk(Settings::getDisk())->get($mail->file);
     });
 
     Route::get('open/{token}', static function (string $token) {
