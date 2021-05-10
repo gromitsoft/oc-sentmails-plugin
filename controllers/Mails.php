@@ -3,7 +3,9 @@
 use Backend\Behaviors\ListController;
 use Backend\Classes\Controller;
 use Backend\Facades\BackendMenu;
+use Flash;
 use GromIT\SentMails\Models\Mail;
+use Illuminate\Http\RedirectResponse;
 
 class Mails extends Controller
 {
@@ -18,6 +20,17 @@ class Mails extends Controller
         parent::__construct();
 
         BackendMenu::setContext('Gromit.SentMails', 'sentmails', 'mails');
+    }
+
+    public function onDeleteAll(): RedirectResponse
+    {
+        Mail::all()->each(function (Mail $mail) {
+            $mail->delete();
+        });
+
+        Flash::success(__('backend::lang.list.delete_selected_success'));
+
+        return redirect()->refresh();
     }
 
     public function view(int $mailId)

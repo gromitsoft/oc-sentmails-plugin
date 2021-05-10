@@ -12,4 +12,12 @@
         data-stripe-load-indicator>
         <?= __('gromit.sentmails::lang.controllers.mails.index.delete_selected.label') ?>
     </button>
+
+    <button class="btn btn-danger oc-icon-trash-o"
+            onclick="$(this).data('request-data', { checked: $('.control-list').listWidget('getChecked') })"
+            data-request="onDeleteAll"
+            data-request-confirm="<?= __('gromit.sentmails::lang.controllers.mails.index.delete_all.confirm') ?>"
+            data-stripe-load-indicator>
+        <?= __('gromit.sentmails::lang.controllers.mails.index.delete_all.label') ?>
+    </button>
 </div>

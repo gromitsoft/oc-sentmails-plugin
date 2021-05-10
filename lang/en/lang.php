@@ -28,7 +28,11 @@ return [
                 'delete_selected' => [
                     'label'   => 'Delete selected',
                     'confirm' => 'Are you really want to delete selected mails?',
-                ]
+                ],
+                'delete_all' => [
+                    'label'   => 'Delete all',
+                    'confirm' => 'Are you really want to delete ALL mails?',
+                ],
             ],
             'view'  => [
                 'page_title'     => 'View mail',
