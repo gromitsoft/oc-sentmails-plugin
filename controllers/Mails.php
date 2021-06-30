@@ -28,7 +28,7 @@ class Mails extends Controller
             $mail->delete();
         });
 
-        Flash::success(__('backend::lang.list.delete_selected_success'));
+        Flash::success(trans('backend::lang.list.delete_selected_success'));
 
         return redirect()->refresh();
     }
@@ -38,15 +38,15 @@ class Mails extends Controller
         $mail = Mail::query()->find($mailId);
 
         if ($mail === null) {
-            $this->pageTitle  = __('gromit.sentmails::lang.errors.mail_not_found');
-            $this->fatalError = __('gromit.sentmails::lang.errors.mail_not_found');
+            $this->pageTitle  = trans('gromit.sentmails::lang.errors.mail_not_found');
+            $this->fatalError = trans('gromit.sentmails::lang.errors.mail_not_found');
             return;
         }
 
         $this->addCss('/plugins/gromit/sentmails/controllers/mails/assets/view.css');
         $this->addJs('/plugins/gromit/sentmails/controllers/mails/assets/view.js');
 
-        $this->pageTitle    = __('gromit.sentmails::lang.controllers.mails.view.page_title');
+        $this->pageTitle    = trans('gromit.sentmails::lang.controllers.mails.view.page_title');
         $this->vars['mail'] = Mail::query()->find($mailId);
     }
 }
