@@ -22,7 +22,7 @@ class Plugin extends PluginBase
     {
         return [
             'name'        => 'SentMails',
-            'description' => __('gromit.sentmails::lang.plugin.description'),
+            'description' => 'gromit.sentmails::lang.plugin.description',
             'author'      => 'Gromit',
             'icon'        => 'icon-envelope-open'
         ];
@@ -48,7 +48,7 @@ class Plugin extends PluginBase
     {
         return [
             'sentmails' => [
-                'label'       => __('gromit.sentmails::lang.menu_label'),
+                'label'       => 'gromit.sentmails::lang.menu_label',
                 'url'         => Backend::url('gromit/sentmails/mails'),
                 'icon'        => 'icon-envelope-open',
                 'permissions' => ['gromit.sentmails.*'],
@@ -67,7 +67,7 @@ class Plugin extends PluginBase
         return [
             'sentmails_settings' => [
                 'label'       => 'SentMails',
-                'description' => __('gromit.sentmails::lang.plugin.settings.sentmails.description'),
+                'description' => 'gromit.sentmails::lang.plugin.settings.sentmails.description',
                 'category'    => SettingsManager::CATEGORY_MAIL,
                 'icon'        => 'icon-envelope-open',
                 'class'       => Settings::class,
